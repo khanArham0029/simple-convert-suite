@@ -26,7 +26,7 @@ export function ConversionCard({
   className)} onClick={onClick}>
       <CardHeader className="p-4 sm:p-6 pb-3 flex-grow">
         <div className="flex justify-between items-start gap-4">
-          <div className="rounded-full p-2 sm:p-3 mb-2 sm:mb-3 bg-zinc-300">
+          <div className="rounded-full p-2 sm:p-3 mb-2 sm:mb-3 bg-purple-300">
             {icon}
           </div>
           <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex">
