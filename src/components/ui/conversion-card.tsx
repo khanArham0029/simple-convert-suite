@@ -1,10 +1,8 @@
-
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-
 interface ConversionCardProps {
   title: string;
   description: string;
@@ -14,7 +12,6 @@ interface ConversionCardProps {
   onClick: () => void;
   className?: string;
 }
-
 export function ConversionCard({
   title,
   description,
@@ -22,19 +19,12 @@ export function ConversionCard({
   fromFormat,
   toFormat,
   onClick,
-  className,
+  className
 }: ConversionCardProps) {
-  return (
-    <Card 
-      className={cn(
-        "overflow-hidden transition-all duration-300 hover:shadow-md hover:border-primary/50 cursor-pointer group",
-        className
-      )}
-      onClick={onClick}
-    >
+  return <Card className={cn("overflow-hidden transition-all duration-300 hover:shadow-md hover:border-primary/50 cursor-pointer group", className)} onClick={onClick}>
       <CardHeader className="p-6 pb-3">
         <div className="flex justify-between items-start">
-          <div className="bg-muted rounded-full p-3 mb-3">
+          <div className="rounded-full p-3 mb-3 bg-zinc-300">
             {icon}
           </div>
           <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100 transition-opacity">
@@ -55,6 +45,5 @@ export function ConversionCard({
           </div>
         </div>
       </CardContent>
-    </Card>
-  );
+    </Card>;
 }
