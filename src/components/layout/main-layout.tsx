@@ -1,16 +1,38 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/lib/auth";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
-  const isAuthenticated = false;
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      toast({
+        title: "Success",
+        description: "Logged out successfully",
+      });
+      navigate("/");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to log out",
+        variant: "destructive",
+      });
+    }
+  };
 
   const NavLinks = () => (
     <>
@@ -31,12 +53,14 @@ export function MainLayout({ children }: MainLayoutProps) {
 
   const AuthButtons = () => (
     <>
-      {isAuthenticated ? (
+      {loading ? (
+        <div className="h-9" /> // Placeholder while loading
+      ) : user ? (
         <>
           <Link to="/dashboard">
             <Button variant="outline" size="sm">Dashboard</Button>
           </Link>
-          <Button variant="ghost" size="sm">Logout</Button>
+          <Button variant="ghost" size="sm" onClick={handleLogout}>Logout</Button>
         </>
       ) : (
         <>
