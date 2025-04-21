@@ -53,28 +53,28 @@ const Index = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-background via-muted to-background">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-background via-convertify-purple/10 to-convertify-blue/10">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
             <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
+              <div className="inline-block rounded-lg bg-convertify-purple/10 px-3 py-1 text-sm text-convertify-purple">
                 5 free conversions daily
               </div>
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                Convert Your Files <span className="text-primary">Effortlessly</span>
+                Convert Your Files <span className="text-convertify-purple">Effortlessly</span>
               </h1>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl">
+              <p className="max-w-[600px] text-convertify-gray md:text-xl">
                 Simple, secure, and fast file conversion tools for all your needs. No software installation required.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/tools">
-                  <Button size="lg" className="text-base">
+                  <Button size="lg" className="text-base bg-convertify-purple hover:bg-convertify-purple/90">
                     Start Converting
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link to="/signup">
-                  <Button variant="outline" size="lg" className="text-base">
+                  <Button variant="outline" size="lg" className="text-base border-convertify-purple/20 hover:bg-convertify-purple/10 hover:text-convertify-purple">
                     Create Account
                   </Button>
                 </Link>
@@ -82,31 +82,31 @@ const Index = () => {
             </div>
             <div className="mx-auto lg:mr-0 flex items-center justify-center">
               <div className="rounded-xl overflow-hidden shadow-2xl relative bg-white p-2">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-br from-convertify-purple/20 via-convertify-orange/20 to-convertify-blue/20 opacity-50" />
                 <div className="grid grid-cols-2 gap-2 relative z-10">
-                  <div className="bg-muted rounded-lg p-4 flex flex-col items-start">
-                    <div className="rounded-full bg-primary/10 p-2 mb-2">
-                      <FileUp className="h-4 w-4 text-primary" />
+                  <div className="bg-convertify-purple/10 rounded-lg p-4 flex flex-col items-start">
+                    <div className="rounded-full bg-convertify-purple/20 p-2 mb-2">
+                      <FileUp className="h-4 w-4 text-convertify-purple" />
                     </div>
-                    <h3 className="text-sm font-medium">PDF</h3>
+                    <h3 className="text-sm font-medium text-convertify-gray-dark">PDF</h3>
                   </div>
                   <div className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-start">
-                    <div className="rounded-full bg-primary/10 p-2 mb-2">
-                      <FileDown className="h-4 w-4 text-primary" />
+                    <div className="rounded-full bg-convertify-blue/10 p-2 mb-2">
+                      <FileDown className="h-4 w-4 text-convertify-blue" />
                     </div>
-                    <h3 className="text-sm font-medium">DOCX</h3>
+                    <h3 className="text-sm font-medium text-convertify-gray-dark">DOCX</h3>
                   </div>
                   <div className="bg-white rounded-lg shadow-sm p-4 flex flex-col items-start">
-                    <div className="rounded-full bg-accent/10 p-2 mb-2">
-                      <Image className="h-4 w-4 text-accent" />
+                    <div className="rounded-full bg-convertify-orange/10 p-2 mb-2">
+                      <Image className="h-4 w-4 text-convertify-orange" />
                     </div>
-                    <h3 className="text-sm font-medium">PNG</h3>
+                    <h3 className="text-sm font-medium text-convertify-gray-dark">PNG</h3>
                   </div>
-                  <div className="bg-muted rounded-lg p-4 flex flex-col items-start">
-                    <div className="rounded-full bg-accent/10 p-2 mb-2">
-                      <FileDown className="h-4 w-4 text-accent" />
+                  <div className="bg-convertify-purple/10 rounded-lg p-4 flex flex-col items-start">
+                    <div className="rounded-full bg-convertify-orange/20 p-2 mb-2">
+                      <FileDown className="h-4 w-4 text-convertify-orange" />
                     </div>
-                    <h3 className="text-sm font-medium">JPG</h3>
+                    <h3 className="text-sm font-medium text-convertify-gray-dark">JPG</h3>
                   </div>
                 </div>
               </div>
@@ -120,11 +120,11 @@ const Index = () => {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
+              <div className="inline-block rounded-lg bg-convertify-purple/10 px-3 py-1 text-sm text-convertify-purple">
                 Powerful Tools
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Conversion Tools</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-convertify-gray md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Choose from our range of powerful file conversion tools
               </p>
             </div>
@@ -147,40 +147,40 @@ const Index = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/30">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-convertify-purple/5 via-white to-convertify-blue/5">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
+              <div className="inline-block rounded-lg bg-convertify-purple/10 px-3 py-1 text-sm text-convertify-purple">
                 Simple Process
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">How It Works</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-convertify-gray md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Convert your files in three simple steps
               </p>
             </div>
           </div>
           <div className="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-3 gap-8 py-12">
             <div className="flex flex-col items-center text-center space-y-4">
-              <div className="rounded-full bg-primary/10 p-4">
-                <FileUp className="h-8 w-8 text-primary" />
+              <div className="rounded-full bg-convertify-purple/10 p-4">
+                <FileUp className="h-8 w-8 text-convertify-purple" />
               </div>
-              <h3 className="text-xl font-bold">1. Upload</h3>
-              <p className="text-muted-foreground">Upload the file you want to convert</p>
+              <h3 className="text-xl font-bold text-convertify-gray-dark">1. Upload</h3>
+              <p className="text-convertify-gray">Upload the file you want to convert</p>
             </div>
             <div className="flex flex-col items-center text-center space-y-4">
-              <div className="rounded-full bg-primary/10 p-4">
-                <ArrowRight className="h-8 w-8 text-primary" />
+              <div className="rounded-full bg-convertify-blue/10 p-4">
+                <ArrowRight className="h-8 w-8 text-convertify-blue" />
               </div>
-              <h3 className="text-xl font-bold">2. Convert</h3>
-              <p className="text-muted-foreground">Our servers process your file quickly</p>
+              <h3 className="text-xl font-bold text-convertify-gray-dark">2. Convert</h3>
+              <p className="text-convertify-gray">Our servers process your file quickly</p>
             </div>
             <div className="flex flex-col items-center text-center space-y-4">
-              <div className="rounded-full bg-primary/10 p-4">
-                <FileDown className="h-8 w-8 text-primary" />
+              <div className="rounded-full bg-convertify-orange/10 p-4">
+                <FileDown className="h-8 w-8 text-convertify-orange" />
               </div>
-              <h3 className="text-xl font-bold">3. Download</h3>
-              <p className="text-muted-foreground">Download your converted file instantly</p>
+              <h3 className="text-xl font-bold text-convertify-gray-dark">3. Download</h3>
+              <p className="text-convertify-gray">Download your converted file instantly</p>
             </div>
           </div>
         </div>
@@ -191,19 +191,19 @@ const Index = () => {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Ready to Start Converting?</h2>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-convertify-gray-darker">Ready to Start Converting?</h2>
+              <p className="max-w-[600px] text-convertify-gray md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Sign up for free and get 5 daily conversions, no credit card required.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link to="/signup">
-                <Button size="lg" className="text-base">
+                <Button size="lg" className="text-base bg-convertify-purple hover:bg-convertify-purple/90">
                   Sign Up For Free
                 </Button>
               </Link>
               <Link to="/tools">
-                <Button variant="outline" size="lg" className="text-base">
+                <Button variant="outline" size="lg" className="text-base border-convertify-purple/20 hover:bg-convertify-purple/10 hover:text-convertify-purple">
                   Explore Tools
                 </Button>
               </Link>
