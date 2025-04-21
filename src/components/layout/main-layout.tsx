@@ -2,14 +2,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
-  // This is a placeholder for authentication status
   const isAuthenticated = false;
+
+  const NavLinks = () => (
+    <>
+      <Link to="/" className="text-sm font-medium transition-colors hover:text-primary">
+        Home
+      </Link>
+      <Link to="/tools" className="text-sm font-medium transition-colors hover:text-primary">
+        Tools
+      </Link>
+      <Link to="/pricing" className="text-sm font-medium transition-colors hover:text-primary">
+        Pricing
+      </Link>
+      <Link to="/about" className="text-sm font-medium transition-colors hover:text-primary">
+        About
+      </Link>
+    </>
+  );
+
+  const AuthButtons = () => (
+    <>
+      {isAuthenticated ? (
+        <>
+          <Link to="/dashboard">
+            <Button variant="outline" size="sm">Dashboard</Button>
+          </Link>
+          <Button variant="ghost" size="sm">Logout</Button>
+        </>
+      ) : (
+        <>
+          <Link to="/login">
+            <Button variant="outline" size="sm">Login</Button>
+          </Link>
+          <Link to="/signup">
+            <Button size="sm">Sign Up</Button>
+          </Link>
+        </>
+      )}
+    </>
+  );
 
   return (
     <div className="min-h-screen bg-muted/30 flex flex-col">
@@ -17,7 +57,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center gap-2">
-              <div className="relative size-8 overflow-hidden bg-gradient-to-br from-primary to-accent rounded-md flex items-center justify-center">
+              <div className="relative size-8 overflow-hidden bg-gradient-to-br from-convertify-purple to-convertify-orange rounded-md flex items-center justify-center">
                 <span className="text-white font-bold text-lg">C</span>
               </div>
               <span className="font-bold text-xl">Convertify</span>
@@ -25,39 +65,32 @@ export function MainLayout({ children }: MainLayoutProps) {
           </div>
           
           <nav className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-sm font-medium transition-colors hover:text-primary">
-              Home
-            </Link>
-            <Link to="/tools" className="text-sm font-medium transition-colors hover:text-primary">
-              Tools
-            </Link>
-            <Link to="/pricing" className="text-sm font-medium transition-colors hover:text-primary">
-              Pricing
-            </Link>
-            <Link to="/about" className="text-sm font-medium transition-colors hover:text-primary">
-              About
-            </Link>
+            <NavLinks />
           </nav>
           
-          <div className="flex items-center gap-2">
-            {isAuthenticated ? (
-              <>
-                <Link to="/dashboard">
-                  <Button variant="outline" size="sm">Dashboard</Button>
-                </Link>
-                <Button variant="ghost" size="sm">Logout</Button>
-              </>
-            ) : (
-              <>
-                <Link to="/login">
-                  <Button variant="outline" size="sm">Login</Button>
-                </Link>
-                <Link to="/signup">
-                  <Button size="sm">Sign Up</Button>
-                </Link>
-              </>
-            )}
+          <div className="hidden md:flex items-center gap-2">
+            <AuthButtons />
           </div>
+
+          {/* Mobile Menu */}
+          <Sheet>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon" className="mr-2">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[80vw] sm:w-[385px]">
+              <div className="flex flex-col gap-4 mt-6">
+                <div className="flex flex-col gap-4">
+                  <NavLinks />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <AuthButtons />
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </header>
       
@@ -67,10 +100,10 @@ export function MainLayout({ children }: MainLayoutProps) {
       
       <footer className="border-t bg-background">
         <div className="container py-8 md:py-12">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             <div className="flex flex-col">
               <div className="flex items-center gap-2 mb-4">
-                <div className="relative size-6 overflow-hidden bg-gradient-to-br from-primary to-accent rounded-md flex items-center justify-center">
+                <div className="relative size-6 overflow-hidden bg-gradient-to-br from-convertify-purple to-convertify-orange rounded-md flex items-center justify-center">
                   <span className="text-white font-bold text-xs">C</span>
                 </div>
                 <span className="font-bold text-lg">Convertify</span>
