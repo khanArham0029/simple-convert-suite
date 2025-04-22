@@ -1,12 +1,20 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -16,6 +24,36 @@ export function MainLayout({ children }: MainLayoutProps) {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (user) {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('first_name, last_name')
+          .eq('id', user.id)
+          .single();
+        
+        if (data && !error) {
+          setFirstName(data.first_name || '');
+          setLastName(data.last_name || '');
+        }
+      }
+    };
+    
+    fetchProfile();
+  }, [user]);
+
+  const getInitials = () => {
+    if (firstName && lastName) {
+      return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+    } else if (user?.email) {
+      return user.email.charAt(0).toUpperCase();
+    }
+    return "U";
+  };
 
   const handleLogout = async () => {
     try {
@@ -42,9 +80,6 @@ export function MainLayout({ children }: MainLayoutProps) {
       <Link to="/tools" className="text-sm font-medium transition-colors hover:text-primary">
         Tools
       </Link>
-      <Link to="/pricing" className="text-sm font-medium transition-colors hover:text-primary">
-        Pricing
-      </Link>
       <Link to="/about" className="text-sm font-medium transition-colors hover:text-primary">
         About
       </Link>
@@ -56,12 +91,39 @@ export function MainLayout({ children }: MainLayoutProps) {
       {loading ? (
         <div className="h-9" /> // Placeholder while loading
       ) : user ? (
-        <>
-          <Link to="/dashboard">
-            <Button variant="outline" size="sm">Dashboard</Button>
-          </Link>
-          <Button variant="ghost" size="sm" onClick={handleLogout}>Logout</Button>
-        </>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+              <Avatar>
+                <AvatarImage src="" />
+                <AvatarFallback className="bg-primary/10 text-primary">
+                  {getInitials()}
+                </AvatarFallback>
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <div className="flex items-center justify-start gap-2 p-2">
+              <div className="flex flex-col space-y-1 leading-none">
+                {firstName && lastName && (
+                  <p className="font-medium">{`${firstName} ${lastName}`}</p>
+                )}
+                {user.email && (
+                  <p className="w-[200px] truncate text-sm text-muted-foreground">
+                    {user.email}
+                  </p>
+                )}
+              </div>
+            </div>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild>
+              <Link to="/dashboard" className="cursor-pointer">Dashboard</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+              Logout
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       ) : (
         <>
           <Link to="/login">
