@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Upload, ArrowRight, Download } from "lucide-react";
 
@@ -25,15 +26,16 @@ const AnimatedIcon: React.FC<{
 
   return (
     <span
-      className="pointer-events-none absolute opacity-50"
+      className="pointer-events-none absolute"
       style={{
         top,
         left: "-60px",
         animation: `file-move-right ${duration}s linear ${delay}s infinite`,
         zIndex: 0,
+        opacity: 0.1, // Reduced opacity
       }}
     >
-      <Icon size={size} color={color} strokeWidth={2.2} className="drop-shadow-md" />
+      <Icon size={size} color={color} strokeWidth={2.2} className="drop-shadow-md opacity-30" />
     </span>
   );
 };
