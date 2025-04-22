@@ -1,11 +1,10 @@
-
 import React, { useEffect, useRef } from "react";
-import { FileArrowUp, ArrowRight, FileArrowDown } from "lucide-react";
+import { Upload, ArrowRight, Download } from "lucide-react";
 
 const icons = [
-  { Component: FileArrowUp, color: "#8B5CF6" },
+  { Component: Upload, color: "#8B5CF6" },
   { Component: ArrowRight, color: "#0EA5E9" },
-  { Component: FileArrowDown, color: "#F97316" },
+  { Component: Download, color: "#F97316" },
 ];
 
 const ANIMATION_COUNT = 7;
@@ -24,7 +23,6 @@ const AnimatedIcon: React.FC<{
   const size = random(38, 64);
   const delay = random(0, 8);
 
-  // Each icon moves horizontally (left to right)
   return (
     <span
       className="pointer-events-none absolute opacity-50"
@@ -40,7 +38,6 @@ const AnimatedIcon: React.FC<{
   );
 };
 
-// Add keyframes using a style tag for custom animation
 const FileConversionAnimation: React.FC = () => {
   const styleRef = useRef<HTMLStyleElement | null>(null);
 
