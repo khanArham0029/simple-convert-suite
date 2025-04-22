@@ -1,10 +1,10 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { MainLayout } from "@/components/layout/main-layout";
 import { FileUp, ArrowRight } from "lucide-react";
 import { ConversionCard } from "@/components/ui/conversion-card";
+import FileConversionAnimation from "@/components/ui/FileConversionAnimation";
 
 const Index = () => {
   const popularTools = [
@@ -37,8 +37,11 @@ const Index = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/30">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/30 relative overflow-hidden">
+        {/* Animated background */}
+        <FileConversionAnimation />
+
+        <div className="container px-4 md:px-6 relative z-10">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
